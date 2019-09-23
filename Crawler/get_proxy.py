@@ -9,6 +9,7 @@ Date: 2019/9/22 15:54
 Desc: get proxy
 '''
 
+import time
 import requests
 import chardet
 import traceback
@@ -36,6 +37,8 @@ class GetProxy():
 
     # 获取西刺代理网站免费代理ip
     def xici_proxy(self):
+        # 加入延时，不幸我的ip被西刺封了
+        time.sleep(3)
         # 只获取网站高匿代理前20页的代理
         xici_list = list()
         for i in range(1, 20):
@@ -58,6 +61,8 @@ class GetProxy():
 
     # 获取快代理网站免费代理ip
     def kuai_proxy(self):
+        # 加入延时
+        time.sleep(3)
         # 只获取网站高匿代理前20页的代理
         kuai_list = list()
         for i in range(1, 20):
@@ -72,7 +77,7 @@ class GetProxy():
             # ip和port生成一个一一对应的元组列表，然后取出
             for ip, port in zip(ip_list, port_list):
                 proxy = ip + ":" + port
-                proxy = {"proxy": proxy} # 返回的代理是字典的格式，方便直接存储到mongodb数据库中
+                proxy = {"proxy": proxy}  # 返回的代理是字典的格式，方便直接存储到mongodb数据库中
                 # yield proxy
                 kuai_list.append(proxy)
         return kuai_list
@@ -82,6 +87,8 @@ class GetProxy():
         # 只获取网站高匿代理前20页的代理
         # liuliu_list = list()
         for i in range(1, 20):
+            # 加入延时
+            time.sleep(3)
             url = "http://www.66ip.cn/{}.html".format(i)
             response = self.parse_url(url)
             # 上面的response类型有时候是NoneType,有些是str，下面使用str(response)
