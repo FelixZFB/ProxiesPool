@@ -37,10 +37,10 @@ class GetProxy():
 
     # 获取西刺代理网站免费代理ip
     def xici_proxy(self):
-        # 加入延时，不幸我的ip被西刺封了
+        # 加入延时，防止ip被封
         time.sleep(3)
         # 只获取网站高匿代理前20页的代理
-        xici_list = list()
+        # xici_list = list()
         for i in range(1, 20):
             url = "https://www.xicidaili.com/nn/{}".format(i)
             response = self.parse_url(url)
@@ -55,16 +55,16 @@ class GetProxy():
             for ip, port in zip(ip_list, port_list):
                 proxy = ip + ":" + port
                 proxy = {"proxy": proxy}  # 返回的代理是字典的格式，方便直接存储到mongodb数据库中
-                # yield proxy
-                xici_list.append(proxy)
-        return xici_list
+                yield proxy
+                # xici_list.append(proxy)
+        # return xici_list
 
     # 获取快代理网站免费代理ip
     def kuai_proxy(self):
         # 加入延时
         time.sleep(3)
         # 只获取网站高匿代理前20页的代理
-        kuai_list = list()
+        # kuai_list = list()
         for i in range(1, 20):
             url = "https://www.kuaidaili.com/free/inha/{}/".format(i)
             response = self.parse_url(url)
@@ -78,9 +78,9 @@ class GetProxy():
             for ip, port in zip(ip_list, port_list):
                 proxy = ip + ":" + port
                 proxy = {"proxy": proxy}  # 返回的代理是字典的格式，方便直接存储到mongodb数据库中
-                # yield proxy
-                kuai_list.append(proxy)
-        return kuai_list
+                yield proxy
+                # kuai_list.append(proxy)
+        # return kuai_list
 
     # 获取快代理网站免费代理ip
     def liuliu_proxy(self):

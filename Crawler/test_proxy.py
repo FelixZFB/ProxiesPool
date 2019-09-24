@@ -19,7 +19,7 @@ from multiprocessing.pool import ThreadPool
 class TestIp():
 
     def test_all(self, proxy_list, method):
-        # 进程池中同时最多16个进程
+        # 进程池中同时最多16个进程，数据库中取出的是所有IP的一个列表
         pool = ThreadPool(16)
         # 向进程池中添加任务
         for proxy in proxy_list:
