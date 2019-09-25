@@ -42,7 +42,7 @@ class GetUrl():
     # 使用重试模块，更换IP进行请求，设置最大重试次数为5次
     @retry(stop_max_attempt_number=5)
     def get_baidu(self):
-        print("正在重试，等待百度响应......")
+        print("等待百度响应......")
         # 用IP代理池中的代理请求百度，由于代理速度一般较慢，请求时候加入延时
         response = requests.get(self.url, headers=self.headers, proxies=self.proxy(), timeout=3)
         print("请求成功：%s" % response.status_code)
