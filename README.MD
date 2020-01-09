@@ -21,7 +21,7 @@ Desc: ProxiesPool IP代理池
     - 3.外部api调用
     -
 
-# 外部调用方式：
+# 外部调用IP代理池方式：
 参考api_demo.py
 ```python
 import requests
