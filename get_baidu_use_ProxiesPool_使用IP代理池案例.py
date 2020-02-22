@@ -22,12 +22,14 @@ from retrying import retry
 class GetUrl():
 
     def __init__(self):
+        # 所有IP地址列表
         self.PROXIES_POOL_URL = 'http://127.0.0.1:5000/all'
         self.headers = {'User-Agent': user_agent.generate_user_agent()}
         self.url = 'https://www.baidu.com/'
 
+    # 定义一个返回标准requests中proxies的格式方法
     def proxy(self):
-        # 为了保持代理池中的ip代理有效，定时要进行检测
+        # 为了保持代理池中的ip代理有效，定时要进行检测更新，json格式转换为python的列表
         ip_list = json.loads(requests.get(self.PROXIES_POOL_URL).text)
         # print(len(ip_list))
         # 从ip代理池中随机选择一个ip代理
